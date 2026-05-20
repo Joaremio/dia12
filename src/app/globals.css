@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 12px;
+
+  /* Palette */
+  --bg-main: #0d0620;
+  --bg-secondary: #1a0d35;
+  --bg-tertiary: #2d1040;
+
+  --accent-purple: #c084fc;
+  --accent-pink: #f472b6;
+  --accent-indigo: #818cf8;
+
+  --text-primary: #f0e6ff;
+  --text-secondary: #9d7fc0;
+
+  /* Base colors */
+  --background: #0d0620;
+  --foreground: #f0e6ff;
+
+  --card: #1a0d35;
+  --card-secondary: #4d3070;
+
+  --card-foreground: #f0e6ff;
+
+  --popover: #2d1040;
+  --popover-foreground: #f0e6ff;
+
+  --primary: #c084fc;
+  --primary-foreground: #0d0620;
+
+  --secondary: #2d1040;
+  --secondary-foreground: #c084fc;
+
+  --muted: #2d1040;
+  --muted-foreground: #9d7fc0;
+
+  --accent: #f472b6;
+  --accent-foreground: #0d0620;
+
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+
+  --border: #4d3070;
+  --input: #2d1040;
+  --ring: #c084fc;
+
+  --radius: 1rem;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-secondary: var(--card-secondary);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
