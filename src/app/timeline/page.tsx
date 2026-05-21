@@ -6,9 +6,12 @@ import { Camera, MapPin, Music } from "lucide-react";
 import { Memory } from "@/src/types/memory";
 import { getMemories, saveMemory } from "@/src/services/memoryService";
 import MemoryDialog from "@/src/components/MemoryDialog";
+import { MemoryDetailModal } from "@/src/components/MemoryDetailModal";
+import { formartDate } from "@/src/lib/formartDate";
 
 export default function Timeline() {
   const [memories, setMemories] = useState<Memory[]>([]);
+  const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -92,6 +95,7 @@ export default function Timeline() {
                   className="rounded-[24px] overflow-hidden bg-card"
                   whileHover={{ scale: 0.97 }}
                   whileTap={{ scale: 0.97 }}
+                  onClick={() => setSelectedMemory(memory)}
                 >
                   {/* Photo Area */}
                   {memory.photo ? (
@@ -115,7 +119,7 @@ export default function Timeline() {
                   <div className="p-4">
                     {/* Date Badge */}
                     <div className="inline-block px-3 py-1 rounded-full mb-2 bg-muted text-muted-foreground text-xs">
-                      {memory.date}
+                      {formartDate(memory.date)}
                     </div>
 
                     {/* Title */}
@@ -166,6 +170,11 @@ export default function Timeline() {
       >
         + Adicionar Memória
       </motion.button>
+
+      <MemoryDetailModal
+        memory={selectedMemory}
+        onClose={() => setSelectedMemory(null)}
+      />
 
       <MemoryDialog
         open={isOpen}

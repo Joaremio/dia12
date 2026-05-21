@@ -5,6 +5,7 @@ import "./globals.css";
 
 import NavBar from "../components/navbar";
 import { Header } from "../components/header";
+import { BackgroundMusic } from "../components/BackgroundMusic";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col ">
         <Header />
+        <BackgroundMusic />
         <main className="flex-1 pb-24 px-2">{children}</main>
 
         <NavBar />
