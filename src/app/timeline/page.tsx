@@ -77,7 +77,7 @@ function MemoryCard({
 }) {
   return (
     <motion.div
-      className="relative"
+      className="relative max-w-sm"
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{
@@ -160,7 +160,7 @@ function MemoryCard({
           <motion.p
             className="leading-relaxed py-2 text-[#fcd97d] font-semibold"
             style={{
-              fontSize: "0.78rem",
+              fontSize: "0.80rem",
             }}
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
@@ -222,7 +222,7 @@ export default function Timeline() {
     <>
       <FloatingHearts />
 
-      <div className="relative px-4 py-8 pb-28 z-10">
+      <div className="relative px-4 py-8 pb-28 z-10 flex flex-col justify-center items-center">
         {/* Título */}
         <motion.h2
           className="mb-8 text-center uppercase tracking-widest font-dm-sans text-muted-foreground"

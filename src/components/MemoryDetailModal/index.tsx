@@ -111,14 +111,14 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
 
           {/* Modal wrapper */}
           <motion.div
-            className="fixed inset-0 z-50 flex items-start justify-center p-12 pt-12"
+            className="fixed inset-0 z-50 flex items-center justify-center mb-8 "
             initial={{ opacity: 0, scale: 0.75, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.75, y: 40 }}
             transition={{ type: "spring", damping: 24, stiffness: 300 }}
           >
             <div
-              className="relative w-full max-w-sm rounded-4xl overflow-hidden"
+              className="relative w-full max-w-[24rem] rounded-4xl overflow-hidden"
               style={{
                 backgroundColor: "#120828",
                 boxShadow: `0 0 0 1px ${THEME_COLOR}33, 0 0 60px ${THEME_COLOR}33, 0 32px 64px rgba(0,0,0,0.8)`,
@@ -144,7 +144,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
               {/* Photo */}
               {memory.photo ? (
                 <motion.div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
+                  className="relative w-full aspect-square overflow-hidden"
                   initial={{ scale: 1.08 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
