@@ -6,6 +6,7 @@ import "./globals.css";
 import NavBar from "../components/navbar";
 import { Header } from "../components/header";
 import { BackgroundMusic } from "../components/BackgroundMusic";
+import { MemoriesProvider } from "../context/MemoriesContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +34,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen flex-col ">
-        <Header />
-        <BackgroundMusic />
-        <main className="flex-1 pb-24 px-2">{children}</main>
+        <MemoriesProvider>
+          <Header />
+          <BackgroundMusic />
+          <main className="flex-1 pb-24 px-2">{children}</main>
 
-        <NavBar />
+          <NavBar />
+        </MemoriesProvider>
       </body>
     </html>
   );

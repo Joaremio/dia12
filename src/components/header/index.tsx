@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemories } from "@/src/context/MemoriesContext";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 
@@ -17,6 +18,7 @@ const particles = [
 
 export function Header() {
   const [isClicked, setIsClicked] = useState(false);
+  const { memories } = useMemories();
 
   const handleHeartClick = () => {
     setIsClicked(true);
@@ -116,14 +118,14 @@ export function Header() {
             color: "#9d7fc0",
           }}
         >
-          juntos há 2 anos e 3 meses
+          uma linha invisivél com fotos da vida que criamos
         </p>
 
         {/* Stats */}
         <div className="flex items-center gap-6 text-center">
           <div>
             <p className="text-2xl font-medium" style={{ color: "#c084fc" }}>
-              12
+              {memories.length}
             </p>
             <p
               className="text-xs uppercase tracking-wide"
@@ -137,13 +139,13 @@ export function Header() {
 
           <div>
             <p className="text-2xl font-medium" style={{ color: "#f472b6" }}>
-              47
+              ∞
             </p>
             <p
               className="text-xs uppercase tracking-wide"
               style={{ color: "#9d7fc0" }}
             >
-              músicas
+              sorrisos
             </p>
           </div>
 
@@ -151,13 +153,13 @@ export function Header() {
 
           <div>
             <p className="text-2xl font-medium" style={{ color: "#818cf8" }}>
-              3
+              1
             </p>
             <p
               className="text-xs uppercase tracking-wide"
               style={{ color: "#9d7fc0" }}
             >
-              viagens
+              história
             </p>
           </div>
         </div>

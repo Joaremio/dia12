@@ -1,3 +1,4 @@
+import { useMemories } from "@/src/context/MemoriesContext";
 import { Clock, House, LucideIcon, Shell, Scroll } from "lucide-react";
 import Link from "next/link";
 
@@ -17,11 +18,6 @@ const tabs: Tabs[] = [
     title: "Timeline",
     icon: Clock,
     href: "/timeline",
-  },
-  {
-    title: "Roleta",
-    icon: Shell,
-    href: "/roll",
   },
   {
     title: "Desejos",
