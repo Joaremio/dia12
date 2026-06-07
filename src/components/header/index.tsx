@@ -37,7 +37,7 @@ export function Header() {
 
   return (
     <div
-      className="relative overflow-hidden py-2"
+      className="sticky top-0 z-50 overflow-hidden py-2"
       style={{
         background: "linear-gradient(160deg, #2d1040, #0d0620, #1a0535)",
       }}

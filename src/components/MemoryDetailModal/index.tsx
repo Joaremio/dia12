@@ -106,21 +106,6 @@ function ModalHearts() {
   );
 }
 
-// ─── Brilho correndo no divisor ────────────────────────────────────────────
-function ScanLine({ color }: { color: string }) {
-  return (
-    <div className="relative w-full h-px my-3">
-      <div
-        className="w-full h-px"
-        style={{
-          background: `linear-gradient(90deg, transparent, ${color}80, transparent)`,
-          boxShadow: `0 0 8px ${color}33`,
-        }}
-      />
-    </div>
-  );
-}
-
 // ─── Badge metálico ────────────────────────────────────────────────────────
 function MetaBadge({
   icon,
@@ -160,7 +145,7 @@ function PhotoHeart() {
   return (
     <motion.button
       className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full flex items-center justify-center"
-      style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(6px)" }}
+      style={{ background: "rgba(0,0,0,0.55)" }}
       whileTap={{ scale: 0.85 }}
       onClick={() => setLiked((v) => !v)}
     >
@@ -275,16 +260,14 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
     <AnimatePresence>
       {memory && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop — sem blur para não travar no Android */}
           <motion.div
             className="fixed inset-0 z-50"
-            style={{
-              backgroundColor: "rgba(5,2,16,0.88)",
-              backdropFilter: "blur(18px)",
-            }}
+            style={{ backgroundColor: "rgba(5,2,16,0.93)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.16 }}
             onClick={onClose}
           />
 
@@ -294,14 +277,19 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.12 }}
           >
             <motion.div
               className="relative w-full max-w-[24rem]"
-              initial={{ scale: 0.72, y: 48, rotateX: 8 }}
-              animate={{ scale: 1, y: 0, rotateX: 0 }}
-              exit={{ scale: 0.72, y: 48, rotateX: 8, opacity: 0 }}
-              transition={{ type: "spring", damping: 22, stiffness: 280 }}
-              style={{ perspective: 800 }}
+              initial={{ scale: 0.9, y: 24, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 24, opacity: 0 }}
+              transition={{
+                type: "spring",
+                damping: 30,
+                stiffness: 340,
+                mass: 0.6,
+              }}
             >
               {/* Card */}
               <div
@@ -318,10 +306,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
                 <motion.button
                   onClick={onClose}
                   className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full flex items-center justify-center"
-                  style={{
-                    backgroundColor: "rgba(0,0,0,0.55)",
-                    backdropFilter: "blur(8px)",
-                  }}
+                  style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
                   initial={{ opacity: 0, scale: 0.7 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.25, type: "spring", stiffness: 300 }}
@@ -359,6 +344,8 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
                       animate={{ opacity: [0.4, 1, 0.4] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     />
+
+                    <PhotoHeart />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -407,8 +394,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
 
                   {/* Descrição */}
                   <motion.p
-                    className="leading-relaxed text-accent font-semibold mt-2 mb-4"
-                    style={{ fontSize: "0.78rem" }}
+                    className="leading-relaxed text-accent font-semibold text-sm"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.32 }}
@@ -417,7 +403,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
                   </motion.p>
 
                   {/* Meta: data + local */}
-                  <div className="flex items-center justify-between flex-wrap gap-2  py-2">
+                  <div className="flex items-center justify-between flex-wrap gap-2 mt-4">
                     <MetaBadge
                       icon={
                         <Heart

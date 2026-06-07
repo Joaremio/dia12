@@ -397,9 +397,6 @@ export default function Timeline() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1 font-dm-sans">
-            tudo que vivemos
-          </p>
           <h2
             className="text-2xl font-medium text-[#f0e6ff]"
             style={{ fontFamily: "'Playfair Display', serif" }}
