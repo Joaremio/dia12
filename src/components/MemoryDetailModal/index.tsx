@@ -137,7 +137,6 @@ function MetaBadge({
       style={{
         background: "rgba(255,255,255,0.04)",
         border: `1px solid ${THEME_COLOR}33`,
-        backdropFilter: "blur(4px)",
       }}
       initial={{ opacity: 0, y: 8, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
