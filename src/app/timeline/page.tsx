@@ -236,16 +236,6 @@ function MemoryCard({
             >
               <Heart className="w-3.5 h-3.5 fill-pink-400 text-pink-400" />
             </motion.div>
-
-            {/* Número do índice flutuando sobre a foto */}
-            <motion.div
-              className="absolute bottom-2.5 left-3 text-white/60 font-mono text-xs tracking-widest"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.18 + 0.4 }}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </motion.div>
           </div>
         ) : (
           <div
@@ -271,7 +261,10 @@ function MemoryCard({
         <div className="py-2 px-4 pb-4">
           <motion.h2
             className="text-xl text-[#fcd97d] py-2 leading-tight"
-            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700 }}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 700,
+            }}
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.18 + 0.2 }}
@@ -304,14 +297,10 @@ function MemoryCard({
             <motion.div
               className="absolute top-0 h-px w-8 rounded-full"
               style={{
+                left: "50%",
+                transform: "translateX(-50%)",
                 background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
-              }}
-              animate={{ left: ["-10%", "110%"] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                delay: index * 0.4 + 1,
-                ease: "easeInOut",
+                opacity: 0.8,
               }}
             />
           </div>

@@ -106,44 +106,15 @@ function ModalHearts() {
   );
 }
 
-// ─── Luz girando em torno do modal ────────────────────────────────────────
-function OrbitGlow() {
-  return (
-    <motion.div
-      className="absolute pointer-events-none"
-      style={{
-        inset: -1,
-        borderRadius: 32,
-        background: `conic-gradient(from 0deg, transparent 60%, ${THEME_COLOR}55 80%, ${PINK}44 90%, transparent 100%)`,
-        zIndex: 0,
-      }}
-      animate={{ rotate: 360 }}
-      transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-    />
-  );
-}
-
 // ─── Brilho correndo no divisor ────────────────────────────────────────────
-function ScanLine({ color, delay = 0 }: { color: string; delay?: number }) {
+function ScanLine({ color }: { color: string }) {
   return (
-    <div className="relative w-full h-px my-3 overflow-hidden">
+    <div className="relative w-full h-px my-3">
       <div
-        className="absolute inset-0"
+        className="w-full h-px"
         style={{
-          background: `linear-gradient(90deg, transparent, ${color}55, transparent)`,
-        }}
-      />
-      <motion.div
-        className="absolute top-0 h-px w-10 rounded-full"
-        style={{
-          background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
-        }}
-        animate={{ left: ["-10%", "110%"] }}
-        transition={{
-          duration: 2.2,
-          repeat: Infinity,
-          delay,
-          ease: "easeInOut",
+          background: `linear-gradient(90deg, transparent, ${color}80, transparent)`,
+          boxShadow: `0 0 8px ${color}33`,
         }}
       />
     </div>
@@ -221,13 +192,13 @@ function ShimmerTitle({ children }: { children: React.ReactNode }) {
         style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontWeight: 600,
-          fontSize: "clamp(1.55rem, 5.5vw, 1.85rem)",
           lineHeight: 1.2,
           color: "#fcd97d",
           margin: 0,
           textShadow: `0 0 28px rgba(252,217,125,0.35)`,
           letterSpacing: "0.01em",
         }}
+        className="text-xl"
       >
         {children}
       </h2>
@@ -305,9 +276,6 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
     <AnimatePresence>
       {memory && (
         <>
-          {/* Burst de entrada */}
-          <AnimatePresence>{showBurst && <EntryBurst />}</AnimatePresence>
-
           {/* Backdrop */}
           <motion.div
             className="fixed inset-0 z-50"
@@ -336,9 +304,6 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
               transition={{ type: "spring", damping: 22, stiffness: 280 }}
               style={{ perspective: 800 }}
             >
-              {/* Glow orbital em torno do card */}
-              <OrbitGlow />
-
               {/* Card */}
               <div
                 className="relative rounded-[32px] overflow-hidden"
@@ -395,8 +360,6 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
                       animate={{ opacity: [0.4, 1, 0.4] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     />
-
-                    <PhotoHeart />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -445,7 +408,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
 
                   {/* Descrição */}
                   <motion.p
-                    className="leading-relaxed text-accent font-semibold"
+                    className="leading-relaxed text-accent font-semibold mt-2 mb-4"
                     style={{ fontSize: "0.78rem" }}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -454,10 +417,8 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
                     {memory.description}
                   </motion.p>
 
-                  <ScanLine color={PINK} delay={0.5} />
-
                   {/* Meta: data + local */}
-                  <div className="flex items-center justify-between flex-wrap gap-2 mt-1">
+                  <div className="flex items-center justify-between flex-wrap gap-2  py-2">
                     <MetaBadge
                       icon={
                         <Heart
