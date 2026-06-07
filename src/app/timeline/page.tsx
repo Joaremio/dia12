@@ -144,7 +144,7 @@ function MemoryCard({
         <div className="py-2 px-4 pb-4">
           {/* Title */}
           <motion.h2
-            className=" text-xl text-accent py-2 leading-tight"
+            className=" text-xl  text-[#fcd97d] py-2 leading-tight"
             style={{
               fontFamily: "'Playfair Display', serif",
               fontWeight: 700,
@@ -158,7 +158,7 @@ function MemoryCard({
 
           {/* Description */}
           <motion.p
-            className="leading-relaxed py-2 text-[#fcd97d] font-semibold"
+            className="leading-relaxed py-2 text-accent  font-semibold"
             style={{
               fontSize: "0.80rem",
             }}
