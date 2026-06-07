@@ -175,14 +175,14 @@ function ShimmerTitle({ children }: { children: React.ReactNode }) {
       <h2
         style={{
           fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 600,
+          fontWeight: 400,
           lineHeight: 1.2,
           color: "#fcd97d",
           margin: 0,
           textShadow: `0 0 28px rgba(252,217,125,0.35)`,
           letterSpacing: "0.01em",
         }}
-        className="text-xl"
+        className="text-lg font-bold"
       >
         {children}
       </h2>
@@ -273,7 +273,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
 
           {/* Modal */}
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center px-4"
+            className="fixed inset-0 z-50 flex items-center justify-center p-18 mt-28"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -394,7 +394,7 @@ export function MemoryDetailModal({ memory, onClose }: MemoryDetailModalProps) {
 
                   {/* Descrição */}
                   <motion.p
-                    className="leading-relaxed text-accent font-semibold text-sm"
+                    className="leading-relaxed text-accent font-semibold text-[7px]"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.32 }}
