@@ -188,7 +188,7 @@ export function Header() {
             letterSpacing: "0.15em",
           }}
         >
-          uma linha invisível com fotos da vida que criamos
+          Uma corda invisível da vida que estamos criando.
         </p>
 
         {/* Divisor */}
