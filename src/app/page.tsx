@@ -278,7 +278,7 @@ export default function Home() {
                   opacity: 0.7,
                 }}
               >
-                Touro
+                ♉ Taurus
               </span>
             </div>
 
@@ -315,7 +315,7 @@ export default function Home() {
                   opacity: 0.7,
                 }}
               >
-                Câncer
+                ♋ Cancer
               </span>
             </div>
           </div>
