@@ -19,9 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Feliz Dia dos Namorados ❤️",
-  description:
-    "Uma surpresa especial feita com carinho para celebrar o Dia dos Namorados.",
+  title: "Secret Love",
+  description: "Nem todo segredo deve permanecer escondido...",
 };
 
 export default function RootLayout({
